@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
+
+body {
+ background-color: beige;
+}
+       h1 {
+       color: #ff9797;
+       text-align: center;
+       font-size: 5rem;
+       font-family: "Patua One", serif;
+       font-weight: 400;
+       font-style: normal;
+     }
+
+     h2 {
+       color: #ff9797;
+       text-align: center;
+       font-size: 5rem;
+       font-family: "Patua One", serif;
+       font-weight: 400;
+       font-style: normal;
+     }
+
+     img {
+       height: 700px;
+       width: 550px;
+       cursor: pointer;
+     }
+
+     .ish {
+       position: relative;
+       left: 25%;
+     }
+
+     .dev {
+       position: relative;
+       left: 30%;
+     }
+     
+   </style>
+</head>
+<body>
+    <h1>Challenge 2</h1>
+    <h2>whose biceps are bigger?</h2>
+    <img class="ish" src="ish2.jpg" alt="">
+    <img class="dev" src="dev2.jpg" alt="">
+    
+</body>
+
+<script>
+    var dev1 = document.querySelector(".dev");
+    var ish1 = document.querySelector(".ish");
+    dev1.addEventListener("click", function () {
+      window.location.href = "dev2.html";
+    });
+    ish1.addEventListener("click", function () {
+      window.location.href = "ish2.html";
+    });
+  </script>
+</html>

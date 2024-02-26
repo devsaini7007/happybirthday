@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
+      * {
+        background-color: beige;
+      }
+
+      h1 {
+        color: #ff9797;
+        font-family: "Patua One", serif;
+        font-weight: 400;
+        font-style: normal;
+        position: relative;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 4rem;
+        color: #ff9797;
+        font-family: "Patua One", serif;
+
+        font-weight: 400;
+        font-style: normal;
+        position: relative;
+        text-align: center;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      }
+
+      #board {
+        width: 540px;
+        height: 713.5px;
+        border: 2px solid purple;
+
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      #board img {
+        width: 135px;
+        height: 142.7px;
+        border: 0px;
+      }
+
+      /* #pieces {
+        width: 893px;
+        height: 162px;
+        border:0px;
+
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap;
+      } */
+
+      #pieces img {
+        width: 135px;
+        height: 142.7px;
+        border: 0px;
+      }
+      button {
+        margin-top: 3rem;
+        padding: 10px 20px ;
+        font-size: 3rem;
+        border-radius: 50px;
+        background-color: #ff9797;
+        border: black solid 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>To proceed further, You'll need to complete these challenges</h1>
+    <h2>Challenge 1</h2>
+
+    <br />
+    <div id="board">
+      <div class="puzzle-piece" data-order="1"></div>
+      <div class="puzzle-piece" data-order="2"></div>
+    </div>
+    <div id="pieces"></div>
+
+    <button type="submit" id="submit">Continue</button>
+     <p>yr pehle ye continue mt dbana coding skills khtm ho gyi</p>
+
+    <script>
+      var rows = 4;
+      var columns = 5;
+
+      var currTile;
+      var otherTile;
+
+      var turns = 0;
+
+      window.onload = function () {
+        //initialize the 5x5 board
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < columns; c++) {
+            //<img>
+            let tile = document.createElement("img");
+            tile.src = "./images/blank.jpg";
+
+            //DRAG FUNCTIONALITY
+            tile.addEventListener("dragstart", dragStart); //click on image to drag
+            tile.addEventListener("dragover", dragOver); //drag an image
+            tile.addEventListener("dragenter", dragEnter); //dragging an image into another one
+            tile.addEventListener("dragleave", dragLeave); //dragging an image away from another one
+            tile.addEventListener("drop", dragDrop); //drop an image onto another one
+            tile.addEventListener("dragend", dragEnd); //after you completed dragDrop
+
+            document.getElementById("board").append(tile);
+          }
+        }
+
+        //pieces
+        let pieces = [];
+        for (let i = 1; i <= rows * columns; i++) {
+          pieces.push(i.toString()); //put "1" to "25" into the array (puzzle images names)
+        }
+        pieces.reverse();
+        for (let i = 0; i < pieces.length; i++) {
+          let j = Math.floor(Math.random() * pieces.length);
+
+          //swap
+          let tmp = pieces[i];
+          pieces[i] = pieces[j];
+          pieces[j] = tmp;
+        }
+
+        for (let i = 0; i < pieces.length; i++) {
+          let tile = document.createElement("img");
+          tile.src = "./images/" + pieces[i] + ".jpg";
+
+          //DRAG FUNCTIONALITY
+          tile.addEventListener("dragstart", dragStart); //click on image to drag
+          tile.addEventListener("dragover", dragOver); //drag an image
+          tile.addEventListener("dragenter", dragEnter); //dragging an image into another one
+          tile.addEventListener("dragleave", dragLeave); //dragging an image away from another one
+          tile.addEventListener("drop", dragDrop); //drop an image onto another one
+          tile.addEventListener("dragend", dragEnd); //after you completed dragDrop
+
+          document.getElementById("pieces").append(tile);
+        }
+      };
+
+      //DRAG TILES
+      function dragStart() {
+        currTile = this; //this refers to image that was clicked on for dragging
+      }
+
+      function dragOver(e) {
+        e.preventDefault();
+      }
+
+      function dragEnter(e) {
+        e.preventDefault();
+      }
+
+      function dragLeave() {}
+
+      function dragDrop() {
+        otherTile = this; //this refers to image that is being dropped on
+      }
+
+      function dragEnd() {
+        if (currTile.src.includes("blank")) {
+          return;
+        }
+        let currImg = currTile.src;
+        let otherImg = otherTile.src;
+        currTile.src = otherImg;
+        otherTile.src = currImg;
+
+        turns += 1;
+        document.getElementById("turns").innerText = turns;
+      }
+      // Get the button element by its ID
+      var submit = document.getElementById("submit");
+
+      // Add a click event listener to the button
+      submit.addEventListener("click", function () {
+        // Your code to execute when the button is clicked
+        window.location.href = "page3.html";
+        // You can replace the alert with any action or function you want to perform
+      });
+    </script>
+  </body>
+</html>

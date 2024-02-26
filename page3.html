@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
+
+      body {
+        background-color: beige;
+      }
+      h1 {
+        color: #ff9797;
+        text-align: center;
+        font-size: 3rem;
+        font-family: "Patua One", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      h2 {
+        color: #ff9797;
+        text-align: center;
+        font-size: 3rem;
+        font-family: "Patua One", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      h1 {
+        color: #ff9797;
+        text-align: center;
+        font-size: 3rem;
+        font-family: "Patua One", serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+
+      img {
+        position: relative;
+        align-content: center;
+        top: 20%;
+        left: 45%;
+        width: 10rem;
+        height: 20rem;
+      }
+
+      h3 {
+        margin: 20rem;
+        color: #ff9797;
+        text-align: center;
+        font-size: 3rem;
+        font-family: "Patua One", serif;
+        font-weight: 400;
+        font-style: normal;
+
+      }
+
+      input {
+        position: absolute;
+        top: 60%;
+        left: 41% ;
+        font-size: 2rem
+      }
+      button {
+        background-color: #ff9797;
+        position: absolute;
+        top: 60%;
+        left: 56% ;
+        font-size: 2rem;
+        border: 1px solid;
+        border-radius: 20px;
+
+      }
+      p {
+        color: #ff9797;
+        text-align: center;
+        font-size: 3rem;
+        font-family: "Patua One", serif;
+        font-weight: 400;
+        font-style: normal;
+
+      }
+    </style>
+  </head>
+  <body>
+    <h1>wooohoooo!!</h1>
+    <h2>Goood Job</h2>
+    <img
+      src="/happy-cat-happy-happy-cat.gif"
+      alt=""
+      style="height: 200px; width: 200px"
+    />
+    <h3>Inert password to continue</h3>
+    <input type="password" id="password" name="password" required />
+    <button type="button" onclick="checkPassword()">Check</button>
+    <p>Hint : your name</p>
+  </body>
+  <script>
+    function checkPassword() {
+        // Get the input value
+        var inputPassword = document.getElementById('password').value;
+
+        // Check if the input is "seerat"
+        if (inputPassword === "seerat") {
+            // Redirect to page4.html if the password is correct
+            window.location.href = "page4.html";
+        } else {
+            // Show an alert if the password is incorrect
+            alert("Incorrect Password! Please try again.");
+        }
+    }
+</script>
+</html>
